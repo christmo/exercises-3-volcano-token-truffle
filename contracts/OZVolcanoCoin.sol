@@ -39,9 +39,9 @@ contract OZVolcanoCoin is
         uint256 amount;
     }
 
-    function _increaseSupply(uint _quantity) public onlyOwner {
+    function _increaseSupply() public onlyOwner {
         _mint(_msgSender(), totalSupply());
-		emit supplyChanged(_quantity);
+		emit supplyChanged(totalSupply());
     }
 
     function transfer(address recipient, uint256 amount)
