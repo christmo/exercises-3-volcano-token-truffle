@@ -1,0 +1,19 @@
+Hi there! I have been taking a look at your Volcano Coin homework. Here is some feedback:
+
+You have imported the OZ **Ownable** contract, therefore your modifier onlyMe is not required. You can mark any function that you want to be only available to the owner as 'onlyOwner' which is in built into the **Ownable** contract. 
+
+I am not sure why the address of the admin has been made private. Normally this would not be required as anyone on the blockchain can see an address and it's visibility shouldn't have any impact on the security of the contract.
+
+You have two events with the name **Log.** Is this what you intended to do? You are not able to have two events called the same name as there would be no way for the contract to differentiate between which one of these you are intending for it to call.
+
+In your *TransferEvent* event, you have only specified the data types. A clearer way to write this would be:
+*'event TransferEvent (string _label, address _address, uint _amount);'*
+This just gives whoever is reading the code more of an understanding of what elements the event will emit.
+
+The function** decimals() **does nothing except return 2. This can be removed.
+
+The function** _getID() **can be made internal rather than private as it is only being called from within another function. I would also rename the function to be something more explanatory about its purpose. Something like _incrementCount() would be more descriptive.
+
+You have two functions called **updatePayment()**. These should be named differently to avoid confusion. Also they are both set to onlyAdmin. This would stop the user who made the payment from being able to change the information of a payment that they themselves have made. I think that I am right in thinking that one function (the one with no comment) was the one for the user to use to amend the payment information and the one with the comment parameter was the one for the admin to use to amend payment information? I have tried deploying your code but cannot seem to get either or these functions to amend the payment details. Was it working when you tested it?
+
+All in all a good effort! Theres just a few small tweaks and it will work perfectly. Good job!
